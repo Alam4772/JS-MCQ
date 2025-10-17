@@ -1,9 +1,9 @@
-name: Build and Deploy (Vite) to Firebase Hosting
+name: Build (public/) and Deploy (Vite) to Firebase Hosting
 
 on:
   push:
     branches:
-      - release # change to the branch you deploy from
+      - release # change if needed
 
 jobs:
   build-and-deploy:
@@ -13,32 +13,42 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Use Node.js 24
+      - name: Use Node.js 18 and enable npm cache
         uses: actions/setup-node@v4
         with:
-          node-version: "24"
+          node-version: "18"
+          cache: "npm"
 
-      - name: Cache npm
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      - name: Show repo layout (debug)
+        run: |
+          echo "Repo root files:"
+          ls -la
+          echo "public/ files:"
+          ls -la public || true
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies (in public/)
+        working-directory: public
+        run: |
+          echo "Working directory: $(pwd)"
+          if [ -f package-lock.json ]; then
+            npm ci --prefer-offline --no-audit --progress=false || {
+              echo "npm ci failed — falling back to npm install"
+              npm install --prefer-offline --no-audit --progress=false
+            }
+          else
+            npm install --prefer-offline --no-audit --progress=false
+          fi
 
-      - name: Build (Vite -> dist/)
+      - name: Build (Vite -> public/dist)
+        working-directory: public
         run: npm run build
         env:
           CI: true
-          # Example of injecting Vite env vars at build time
-          # Uncomment / add as needed:
+          # add any VITE_ secrets here if needed, e.g.:
           # VITE_API_URL: ${{ secrets.VITE_API_URL }}
-          # VITE_OTHER_KEY: ${{ secrets.VITE_OTHER_KEY }}
 
       - name: Deploy to Firebase Hosting
+        # action expects firebase.json at repo root; we set hosting.public to public/dist above
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
