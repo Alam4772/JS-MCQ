@@ -1,17 +1,42 @@
-name: Deploy to Firebase Hosting
+name: Build and Deploy (Vite) to Firebase Hosting
 
 on:
   push:
     branches:
-      - release # Change branch if needed
+      - release # change to the branch you deploy from
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (Vite -> dist/)
+        run: npm run build
+        env:
+          CI: true
+          # Example of injecting Vite env vars at build time
+          # Uncomment / add as needed:
+          # VITE_API_URL: ${{ secrets.VITE_API_URL }}
+          # VITE_OTHER_KEY: ${{ secrets.VITE_OTHER_KEY }}
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
