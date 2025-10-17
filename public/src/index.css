@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  background-color: #0000001a;
+}
+
+#root {
+  height: 100%;
+  overflow: auto;
+}

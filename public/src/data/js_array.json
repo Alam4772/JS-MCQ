@@ -1,0 +1,723 @@
+{
+  "title": "JS Arrays2222",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Which of the following creates an empty array?",
+      "type": "mcq",
+      "choices": [
+        "let arr = {};",
+        "let arr = [];",
+        "let arr = ();",
+        "let arr = array();"
+      ],
+      "a": "let arr = [];",
+      "explain": "`[]` is the literal syntax for creating an empty array."
+    },
+    {
+      "id": 2,
+      "q": "Arrays in JavaScript can hold multiple types of values. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Arrays can store mixed types (e.g., [1, \"hi\", true])."
+    },
+    {
+      "id": 3,
+      "q": "What is the output of: let arr = [1,2,3]; console.log(arr.length);",
+      "type": "text",
+      "a": "3",
+      "explain": ".length gives the number of elements."
+    },
+    {
+      "id": 4,
+      "q": "How do you access the first element of an array arr?",
+      "type": "text",
+      "a": "arr[0]",
+      "explain": "Arrays are zero-indexed; first element is arr[0]."
+    },
+    {
+      "id": 5,
+      "q": "JavaScript arrays are zero-indexed. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "The first index is 0."
+    },
+    {
+      "id": 6,
+      "q": "What does arr.push(4) do?",
+      "type": "text",
+      "a": "Adds element to the end",
+      "explain": "push() appends to the array."
+    },
+    {
+      "id": 7,
+      "q": "What does arr.pop() do?",
+      "type": "text",
+      "a": "Removes last element and returns it",
+      "explain": "pop() removes the last element and returns it."
+    },
+    {
+      "id": 8,
+      "q": "Which method adds an element to the beginning of an array?",
+      "type": "mcq",
+      "choices": [
+        "push",
+        "unshift",
+        "shift",
+        "concat"
+      ],
+      "a": "unshift",
+      "explain": "unshift() adds to the start."
+    },
+    {
+      "id": 9,
+      "q": "Which method removes the first element of an array?",
+      "type": "text",
+      "a": "shift",
+      "explain": "shift() removes and returns the first element."
+    },
+    {
+      "id": 10,
+      "q": "Output of: let arr = [1,2,3]; console.log(arr[3]);",
+      "type": "text",
+      "a": "undefined",
+      "explain": "Index 3 doesn't exist (0–2 are defined)."
+    },
+    {
+      "id": 11,
+      "q": "typeof [] returns \"array\". (True/False)",
+      "type": "tf",
+      "a": "False",
+      "explain": "typeof [] returns \"object\"."
+    },
+    {
+      "id": 12,
+      "q": "Which method joins array elements into a string?",
+      "type": "text",
+      "a": "join",
+      "explain": "join() joins elements into a string."
+    },
+    {
+      "id": 13,
+      "q": "Output of: ['a','b','c'].join('-')",
+      "type": "text",
+      "a": "a-b-c",
+      "explain": "Joins with \"-\" as separator."
+    },
+    {
+      "id": 14,
+      "q": "What does arr.includes(2) return if arr = [1,2,3]?",
+      "type": "text",
+      "a": "true",
+      "explain": "2 exists in [1,2,3]."
+    },
+    {
+      "id": 15,
+      "q": "Which method finds the index of the first occurrence of a value?",
+      "type": "text",
+      "a": "indexOf",
+      "explain": "indexOf() returns the first index of the value."
+    },
+    {
+      "id": 16,
+      "q": "Output: let arr = [1,2,3]; arr[5] = 5; console.log(arr.length);",
+      "type": "text",
+      "a": "6",
+      "explain": "Setting arr[5] creates 6 elements (0–5)."
+    },
+    {
+      "id": 17,
+      "q": "You can have undefined elements in an array. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "You can have holes (undefined values)."
+    },
+    {
+      "id": 18,
+      "q": "Which operator/method can be used to check if a variable is an array?",
+      "type": "text",
+      "a": "Array.isArray",
+      "explain": "Array.isArray() is the safe check."
+    },
+    {
+      "id": 19,
+      "q": "Output: let arr = Array(3); console.log(arr.length);",
+      "type": "text",
+      "a": "3",
+      "explain": "Array(3) creates a sparse array of length 3."
+    },
+    {
+      "id": 20,
+      "q": "Array.isArray(arr) returns true for arrays. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Array.isArray returns true for arrays."
+    },
+    {
+      "id": 21,
+      "q": "Output: let arr = [1,2,3]; arr.shift(); console.log(arr);",
+      "type": "text",
+      "a": "[2,3]",
+      "explain": "shift() removes the first element."
+    },
+    {
+      "id": 22,
+      "q": "Output: let arr = []; arr.push(1,2); arr.unshift(0); console.log(arr);",
+      "type": "text",
+      "a": "[0,1,2]",
+      "explain": "push adds at end, unshift adds at start."
+    },
+    {
+      "id": 23,
+      "q": "Arrays can be sparse in JavaScript. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Sparse arrays have missing indexes (holes)."
+    },
+    {
+      "id": 24,
+      "q": "Which of the following is a valid array?",
+      "type": "mcq",
+      "choices": [
+        "[1,2,3]",
+        "[1, \"2\", true]",
+        "[\"a\", , \"b\"]",
+        "All of the above"
+      ],
+      "a": "All of the above",
+      "explain": "All are valid array syntaxes; sparse elements allowed."
+    },
+    {
+      "id": 25,
+      "q": "Output: let arr = [1,2,3]; console.log(arr[arr.length - 1]);",
+      "type": "text",
+      "a": "3",
+      "explain": "arr[arr.length - 1] gives the last element."
+    },
+    {
+      "id": 26,
+      "q": "Output: [1,2,3,4].slice(1,3)",
+      "type": "text",
+      "a": "[2,3]",
+      "explain": "slice(1,3) returns elements at indices 1 and 2; end excluded."
+    },
+    {
+      "id": 27,
+      "q": "slice modifies the original array. (True/False)",
+      "type": "tf",
+      "a": "False",
+      "explain": "slice returns a shallow copy and does not mutate."
+    },
+    {
+      "id": 28,
+      "q": "Output: [1,2,3,4].splice(1,2)",
+      "type": "text",
+      "a": "[2,3]",
+      "explain": "splice removes and returns removed elements; it mutates."
+    },
+    {
+      "id": 29,
+      "q": "splice modifies the original array. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "splice mutates the array."
+    },
+    {
+      "id": 30,
+      "q": "Output: [1,2,3].concat([4,5])",
+      "type": "text",
+      "a": "[1,2,3,4,5]",
+      "explain": "concat merges arrays and returns new array."
+    },
+    {
+      "id": 31,
+      "q": "Output: [...[1,2,3],4,5]",
+      "type": "text",
+      "a": "[1,2,3,4,5]",
+      "explain": "Spread syntax concatenates arrays."
+    },
+    {
+      "id": 32,
+      "q": "Output: let arr = [1,2,3]; arr[10] = 11; console.log(arr.length);",
+      "type": "text",
+      "a": "11",
+      "explain": "Assigning index 10 creates length 11 (0..10)."
+    },
+    {
+      "id": 33,
+      "q": "Arrays are objects in JavaScript. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Arrays are a specialized type of object."
+    },
+    {
+      "id": 34,
+      "q": "Output: [1,2,3].indexOf(2)",
+      "type": "text",
+      "a": "1",
+      "explain": "indexOf returns first index of matching value."
+    },
+    {
+      "id": 35,
+      "q": "Output: [1,2,3,2].lastIndexOf(2)",
+      "type": "text",
+      "a": "3",
+      "explain": "lastIndexOf returns the last index of matching value."
+    },
+    {
+      "id": 36,
+      "q": "Output: [1,2,3].reverse()",
+      "type": "text",
+      "a": "[3,2,1]",
+      "explain": "reverse mutates array and returns reversed array."
+    },
+    {
+      "id": 37,
+      "q": "reverse modifies the original array. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "reverse is in-place."
+    },
+    {
+      "id": 38,
+      "q": "Output: [1,2,3].sort()",
+      "type": "text",
+      "a": "[1,2,3]",
+      "explain": "Default sort converts items to strings and sorts lexicographically."
+    },
+    {
+      "id": 39,
+      "q": "sort converts array elements to strings before sorting. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Default sort compares strings."
+    },
+    {
+      "id": 40,
+      "q": "Output after numeric sort: [10,2,5].sort((a,b)=>a-b)",
+      "type": "text",
+      "a": "[2,5,10]",
+      "explain": "Comparator sorts numerically."
+    },
+    {
+      "id": 41,
+      "q": "Which array method executes a function on each element without returning a new array?",
+      "type": "text",
+      "a": "forEach",
+      "explain": "forEach runs a callback for each element but returns undefined."
+    },
+    {
+      "id": 42,
+      "q": "Which array method returns a new array with elements that pass a test?",
+      "type": "text",
+      "a": "filter",
+      "explain": "filter returns a new array of elements that pass predicate."
+    },
+    {
+      "id": 43,
+      "q": "Output: [1,2,3,4].map(x => x*2)",
+      "type": "text",
+      "a": "[2,4,6,8]",
+      "explain": "map returns a new array with mapped values."
+    },
+    {
+      "id": 44,
+      "q": "Output: [1,2,3,4].reduce((acc,val)=>acc+val,0)",
+      "type": "text",
+      "a": "10",
+      "explain": "Sum of elements."
+    },
+    {
+      "id": 45,
+      "q": "reduce can take an initial value. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "reduce has optional initial value parameter."
+    },
+    {
+      "id": 46,
+      "q": "Output: [1,2,3,4].filter(x => x%2===0)",
+      "type": "text",
+      "a": "[2,4]",
+      "explain": "Keeps even numbers."
+    },
+    {
+      "id": 47,
+      "q": "Output: [1,2,3].some(x => x>2)",
+      "type": "text",
+      "a": "true",
+      "explain": "some returns true if any element satisfies predicate."
+    },
+    {
+      "id": 48,
+      "q": "Output: [1,2,3].every(x => x>0)",
+      "type": "text",
+      "a": "true",
+      "explain": "every returns true if all elements satisfy predicate."
+    },
+    {
+      "id": 49,
+      "q": "some returns true if at least one element passes the test. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Definition of some."
+    },
+    {
+      "id": 50,
+      "q": "every returns true if all elements pass the test. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Definition of every."
+    },
+    {
+      "id": 51,
+      "q": "Which method finds the first element that satisfies a condition?",
+      "type": "text",
+      "a": "find",
+      "explain": "find returns the first matching element."
+    },
+    {
+      "id": 52,
+      "q": "Which method finds the index of the first element that satisfies a condition?",
+      "type": "text",
+      "a": "findIndex",
+      "explain": "findIndex returns the index of first matching element."
+    },
+    {
+      "id": 53,
+      "q": "Output: [1,2,3,4].find(x => x>2)",
+      "type": "text",
+      "a": "3",
+      "explain": "First element >2 is 3."
+    },
+    {
+      "id": 54,
+      "q": "Output: [1,2,3,4].findIndex(x => x>2)",
+      "type": "text",
+      "a": "2",
+      "explain": "Index of first element >2 is 2."
+    },
+    {
+      "id": 55,
+      "q": "find returns undefined if no element satisfies the condition. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "find returns undefined when nothing matches."
+    },
+    {
+      "id": 56,
+      "q": "findIndex returns -1 if no element satisfies the condition. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "findIndex returns -1 when nothing matches."
+    },
+    {
+      "id": 57,
+      "q": "Output: [1, [2,3], 4].flat()",
+      "type": "text",
+      "a": "[1,2,3,4]",
+      "explain": "flat() flattens one level by default."
+    },
+    {
+      "id": 58,
+      "q": "flat can flatten nested arrays more than one level deep with depth argument. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "flat(depth) controls levels of flattening."
+    },
+    {
+      "id": 59,
+      "q": "Output: [1,2,3].toString()",
+      "type": "text",
+      "a": "1,2,3",
+      "explain": "toString returns comma-separated string."
+    },
+    {
+      "id": 60,
+      "q": "toString() returns a comma-separated string of array elements. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Definition of toString on arrays."
+    },
+    {
+      "id": 61,
+      "q": "Output: Array.from('hello')",
+      "type": "text",
+      "a": "['h','e','l','l','o']",
+      "explain": "Array.from converts iterable (string) into array of characters."
+    },
+    {
+      "id": 62,
+      "q": "Array.from can convert strings to arrays. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Array.from accepts iterables like strings."
+    },
+    {
+      "id": 63,
+      "q": "Output: Array.from([1,2,3])",
+      "type": "text",
+      "a": "[1,2,3]",
+      "explain": "Creates shallow copy."
+    },
+    {
+      "id": 64,
+      "q": "Output: [1,2,3].fill(0)",
+      "type": "text",
+      "a": "[0,0,0]",
+      "explain": "fill replaces all elements with given value."
+    },
+    {
+      "id": 65,
+      "q": "Output: [1,2,3,4].copyWithin(1,2)",
+      "type": "text",
+      "a": "[1,3,4,4]",
+      "explain": "copyWithin copies sequence starting at src index into target index."
+    },
+    {
+      "id": 66,
+      "q": "Output: [1,2,3,4].includes(3,3)",
+      "type": "text",
+      "a": "false",
+      "explain": "includes starts search at index 3; 3 is at index 2, so false."
+    },
+    {
+      "id": 67,
+      "q": "includes(value, fromIndex) checks starting from fromIndex. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "fromIndex controls start position."
+    },
+    {
+      "id": 68,
+      "q": "Output: [1,2,3].at(-1)",
+      "type": "text",
+      "a": "3",
+      "explain": "at(-1) returns last element."
+    },
+    {
+      "id": 69,
+      "q": "Output: [1,2,3].at(0)",
+      "type": "text",
+      "a": "1",
+      "explain": "at(0) returns first element."
+    },
+    {
+      "id": 70,
+      "q": "at(-2) accesses the second last element. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Negative indices count from end."
+    },
+    {
+      "id": 71,
+      "q": "Output: [1,2,3,4].entries().next()",
+      "type": "text",
+      "a": "{ value: [0,1], done: false }",
+      "explain": "entries() returns iterator of [index,value] pairs."
+    },
+    {
+      "id": 72,
+      "q": "What does for (let [i,v] of [1,2,3].entries()) console.log(i,v) print?",
+      "type": "text",
+      "a": "0 1\n1 2\n2 3",
+      "explain": "entries gives index-value pairs."
+    },
+    {
+      "id": 73,
+      "q": "keys() returns an iterator of indices. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "keys() yields indices."
+    },
+    {
+      "id": 74,
+      "q": "values() returns an iterator of values. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "values() yields values."
+    },
+    {
+      "id": 75,
+      "q": "Output: [...[1,2,3].keys()]",
+      "type": "text",
+      "a": "[0,1,2]",
+      "explain": "keys iterator expanded to array of indices."
+    },
+    {
+      "id": 76,
+      "q": "Output: [...[1,2,3].values()]",
+      "type": "text",
+      "a": "[1,2,3]",
+      "explain": "values iterator expanded to array of values."
+    },
+    {
+      "id": 77,
+      "q": "Output: [...[1,2,3].entries()]",
+      "type": "text",
+      "a": "[[0,1],[1,2],[2,3]]",
+      "explain": "entries iterator expanded."
+    },
+    {
+      "id": 78,
+      "q": "Output: [1,2,3].find(x => x>5)",
+      "type": "text",
+      "a": "undefined",
+      "explain": "No element >5, so undefined."
+    },
+    {
+      "id": 79,
+      "q": "Output: [1,2,3].findIndex(x => x>5)",
+      "type": "text",
+      "a": "-1",
+      "explain": "No match => -1."
+    },
+    {
+      "id": 80,
+      "q": "Output: [[1,2],[3,4]].flatMap(x => x.map(y => y*2))",
+      "type": "text",
+      "a": "[2,4,6,8]",
+      "explain": "flatMap maps and flattens one level."
+    },
+    {
+      "id": 81,
+      "q": "flatMap combines map and flat. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "flatMap = map() then flat(1)."
+    },
+    {
+      "id": 82,
+      "q": "Output: [1,2,3].toLocaleString()",
+      "type": "text",
+      "a": "1,2,3",
+      "explain": "toLocaleString gives locale-aware string; here simple numbers."
+    },
+    {
+      "id": 83,
+      "q": "Output: [1,2,3].find(x => x === 2)",
+      "type": "text",
+      "a": "2",
+      "explain": "find returns the matching element."
+    },
+    {
+      "id": 84,
+      "q": "Array.prototype[@@iterator] allows for...of loops. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Arrays are iterable via @@iterator."
+    },
+    {
+      "id": 85,
+      "q": "Output: [1,2,3].copyWithin(0,1,2)",
+      "type": "text",
+      "a": "[2,2,3]",
+      "explain": "copyWithin copies elements from src range into target index (note: result [2,2,3])."
+    },
+    {
+      "id": 86,
+      "q": "Output: Array.isArray([1,2,3])",
+      "type": "text",
+      "a": "true",
+      "explain": "Checks if value is array."
+    },
+    {
+      "id": 87,
+      "q": "Array.of(1,2,3) creates [1,2,3]. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Array.of creates array from arguments."
+    },
+    {
+      "id": 88,
+      "q": "Output: Array.of(3).length",
+      "type": "text",
+      "a": "1",
+      "explain": "Array.of(3) => [3], length = 1."
+    },
+    {
+      "id": 89,
+      "q": "Output: new Array(3)",
+      "type": "text",
+      "a": "[ <3 empty items> ]",
+      "explain": "new Array(3) creates empty slots; console shows 3 empty items."
+    },
+    {
+      "id": 90,
+      "q": "Output: [1,2,3].findLast(x => x < 3)",
+      "type": "text",
+      "a": "2",
+      "explain": "findLast (newer API) finds last matching element."
+    },
+    {
+      "id": 91,
+      "q": "Output: [1,2,3].findLastIndex(x => x < 3)",
+      "type": "text",
+      "a": "1",
+      "explain": "Index of last element <3 is 1."
+    },
+    {
+      "id": 92,
+      "q": "findLast returns the last element satisfying the condition. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Definition of findLast."
+    },
+    {
+      "id": 93,
+      "q": "Output: [1,2,3].flatMap(x => [x, x*2])",
+      "type": "text",
+      "a": "[1,2,2,4,3,6]",
+      "explain": "flatMap maps and flattens."
+    },
+    {
+      "id": 94,
+      "q": "Output: [1,2,3].at(-4)",
+      "type": "text",
+      "a": "undefined",
+      "explain": "Index -4 is out of range for length 3."
+    },
+    {
+      "id": 95,
+      "q": "arr.at(-length-1) returns undefined. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Out-of-bounds negative index returns undefined."
+    },
+    {
+      "id": 96,
+      "q": "Output: ['a','b','c'].toString() === ['a','b','c'].join(',')",
+      "type": "text",
+      "a": "true",
+      "explain": "toString and join(\",\") produce same result for arrays."
+    },
+    {
+      "id": 97,
+      "q": "Output: [1,2,3].reduceRight((a,b)=>a-b)",
+      "type": "text",
+      "a": "0",
+      "explain": "reduceRight: (3-2)=1; (1-1)=0."
+    },
+    {
+      "id": 98,
+      "q": "Output: [1,2,3,4].reduceRight((a,b)=>a-b)",
+      "type": "text",
+      "a": "-2",
+      "explain": "reduceRight: (4-3)=1; (1-2)=-1; (-1-1)=-2."
+    },
+    {
+      "id": 99,
+      "q": "Array.prototype.reduceRight works right to left. (True/False)",
+      "type": "tf",
+      "a": "True",
+      "explain": "Definition of reduceRight."
+    },
+    {
+      "id": 100,
+      "q": "Output: [1,2,[3,4,[5]]].flat(2)",
+      "type": "text",
+      "a": "[1,2,3,4,5]",
+      "explain": "flat(2) flattens two levels."
+    }
+  ]
+}

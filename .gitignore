@@ -1,0 +1,5 @@
+# React app dependencies and build
+/public/node_modules/
+/public/build/
+/public/dist/
+/public/.env
