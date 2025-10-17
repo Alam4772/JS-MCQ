@@ -3,7 +3,7 @@ name: Build (public/) and Deploy (Vite) to Firebase Hosting
 on:
   push:
     branches:
-      - release # change if needed
+      - release   # change if needed
 
 jobs:
   build-and-deploy:
@@ -16,8 +16,8 @@ jobs:
       - name: Use Node.js 24 and enable npm cache
         uses: actions/setup-node@v4
         with:
-          node-version: "24"
-          cache: "npm"
+          node-version: '24'
+          cache: 'npm'
 
       - name: Show repo layout (debug)
         run: |
@@ -26,13 +26,31 @@ jobs:
           echo "public/ files:"
           ls -la public || true
 
-      - name: Install dependencies (in public/)
+      # Optional: cache node_modules inside public/ using public/package-lock.json as key
+      - name: Cache public/node_modules
+        uses: actions/cache@v4
+        with:
+          path: public/node_modules
+          # if package-lock.json exists in public/, this key will change when deps change
+          key: ${{ runner.os }}-public-node-${{ hashFiles('public/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-public-node-
+
+      - name: Install dependencies (in public/) with verbose fallback
         working-directory: public
         run: |
           echo "Working directory: $(pwd)"
+          # show if lockfile exists
+          if [ -f package-lock.json ]; then
+            echo "Found package-lock.json"
+          else
+            echo "No package-lock.json in public/ — npm install will be used"
+          fi
+
+          # Preferred: npm ci when lockfile exists; fallback to npm install if ci fails or lockfile missing
           if [ -f package-lock.json ]; then
             npm ci --prefer-offline --no-audit --progress=false || {
-              echo "npm ci failed — falling back to npm install"
+              echo "npm ci failed — trying npm install"
               npm install --prefer-offline --no-audit --progress=false
             }
           else
@@ -44,11 +62,10 @@ jobs:
         run: npm run build
         env:
           CI: true
-          # add any VITE_ secrets here if needed, e.g.:
+          # Add any VITE_ secrets here if needed:
           # VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
       - name: Deploy to Firebase Hosting
-        # action expects firebase.json at repo root; we set hosting.public to public/dist above
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
