@@ -3,7 +3,7 @@ name: Build (public/) and Deploy (Vite) to Firebase Hosting
 on:
   push:
     branches:
-      - release # change if needed
+      - release   # change to your deployment branch
 
 jobs:
   build-and-deploy:
@@ -15,55 +15,35 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Use Node.js 24 and enable npm cache
+      - name: Use Node.js 18 and enable npm cache (uses public/package-lock.json)
         uses: actions/setup-node@v4
         with:
-          node-version: "24"
-          cache: "npm"
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: public/package-lock.json
 
-      - name: Show repo layout & lockfile (debug)
+      - name: Show repo layout (debug)
         run: |
           echo "Repo root files:"
           ls -la
           echo "public/ files:"
           ls -la public || true
-          echo "public/package.json:"
-          if [ -f public/package.json ]; then cat public/package.json; else echo "NO public/package.json"; fi
-          echo "public/package-lock.json existence and head:"
-          if [ -f public/package-lock.json ]; then
-            echo "FOUND public/package-lock.json"
-            head -n 20 public/package-lock.json
-          else
-            echo "NO public/package-lock.json"
-          fi
+          echo "Head of public/package-lock.json (if exists):"
+          if [ -f public/package-lock.json ]; then head -n 20 public/package-lock.json; else echo "NO public/package-lock.json"; fi
 
-      - name: Cache public/node_modules (key uses public/package-lock.json)
-        uses: actions/cache@v4
-        with:
-          path: public/node_modules
-          key: ${{ runner.os }}-public-node-${{ hashFiles('public/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-public-node-
-
-      - name: Install dependencies (in public/) with verbose fallback
+      - name: Install dependencies (in public/) with fallback
         working-directory: public
         run: |
           set -e
-          echo "Working directory: $(pwd)"
-          echo "Contents:"
-          ls -la
-
+          echo "Working dir: $(pwd)"
           if [ -f package-lock.json ]; then
-            echo "Attempting npm ci (package-lock.json found)"
+            echo "package-lock.json found — running npm ci"
             npm ci --prefer-offline --no-audit --progress=false || {
-              echo "npm ci failed — printing npm debug info and trying npm install"
-              npm -v
-              node -v
-              npm config list
+              echo "npm ci failed — trying npm install"
               npm install --prefer-offline --no-audit --progress=false
             }
           else
-            echo "No package-lock.json (unexpected) — using npm install"
+            echo "No package-lock.json — running npm install"
             npm install --prefer-offline --no-audit --progress=false
           fi
 
@@ -81,4 +61,4 @@ jobs:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           channelId: live
-          projectId: ${{ env.PROJECT_ID }}
+          projectId: javascript-100
