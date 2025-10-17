@@ -41,7 +41,7 @@ export default function App() {
   useEffect(() => {
     import(`./data/js_array.json`)
       .then((module) => {
-        setQUESTIONS(module.default.questions)
+        setQUESTIONS(module.default.questions);
       })
       .catch((err) => {
         console.error("Error loading JSON:", err);
@@ -203,18 +203,21 @@ export default function App() {
             <div className="bg-white p-4 rounded shadow">
               <div className="font-semibold mb-2">Quick Navigation</div>
               <div className="grid grid-cols-10 gap-1">
-                {QUESTIONS.map((it, i) => (
-                  <button
-                    key={it.id}
-                    onClick={() => setIndex(i)}
-                    className={`text-xs p-1 rounded ${
-                      // @ts-expect-error "Expect-Error"
-                      answers[it.id] ? "bg-green-100" : "bg-slate-200"
-                    }`}
-                  >
-                    {it.id}
-                  </button>
-                ))}
+                {
+                  // @ts-expect-error "Expect Error"
+                  QUESTIONS.map((it, i) => (
+                    <button
+                      key={it.id}
+                      onClick={() => setIndex(i)}
+                      className={`text-xs p-1 rounded ${
+                        // @ts-expect-error "Expect-Error"
+                        answers[it.id] ? "bg-green-100" : "bg-slate-200"
+                      }`}
+                    >
+                      {it.id}
+                    </button>
+                  ))
+                }
               </div>
             </div>
 
